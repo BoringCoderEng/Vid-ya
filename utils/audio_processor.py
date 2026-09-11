@@ -16,7 +16,7 @@ def download_yt_audio(url: str)-> str:
         "outtmpl": output_template,
         "noplaylist": True,
         "extractor_args": {
-        "youtube": {"player_client": ["android", "web"]}
+        "youtube": {"player_client": ["android_vr"]}
         },
         "http_headers": {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
