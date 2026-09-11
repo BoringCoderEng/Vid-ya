@@ -13,7 +13,9 @@ def download_yt_audio(url: str)-> str:
     output_path= os.path.join(DOWNLOAD_DIR, "%(title)s.%(ext)s")
     ydl_opts ={
         "format": "bestaudio/best",
-        "outtmpl": output_path,
+        "outtmpl": output_template,
+        "noplaylist": True,
+        "verbose": True,
         "postprocessors": [
             {
                 "key": "FFmpegExtractAudio",
