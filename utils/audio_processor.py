@@ -15,6 +15,12 @@ def download_yt_audio(url: str)-> str:
         "format": "bestaudio/best",
         "outtmpl": output_template,
         "noplaylist": True,
+        "extractor_args": {
+        "youtube": {"player_client": ["android", "web"]}
+        },
+        "http_headers": {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        },
         "postprocessors": [
             {
                 "key": "FFmpegExtractAudio",
