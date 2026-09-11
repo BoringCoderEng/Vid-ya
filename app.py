@@ -36,10 +36,15 @@ def run_pipeline(source: str, language: str = "english", progress_cb=None) -> di
             progress_cb(i)
 
     step(0)
-    chunks = process_input(source)
+    chunks = process_input(source)          # <-- this line was missing
 
-    step(1)
-    transcript = transcribe_all(chunks, language=language)
+    step(1)  
+    if isinstance(chunks, str):
+    # captions were found — we already have the transcript, skip Whisper entirely
+        transcript = chunks
+    else:
+        # no captions — chunks is a list of audio file paths, run Whisper as before
+        transcript = transcribe_all(chunks, language=language)
     print(f"raw transcription: {transcript[:300]}")
 
     step(2)
