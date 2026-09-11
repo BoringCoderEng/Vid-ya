@@ -4,11 +4,21 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough, RunnableLambda
 from core.vector_store import build_vector_store, load_vector_store, get_retriever
+import streamlit as st
+
+MISTRAL_API_KEY=os.getenv("MISTRAL_API_KEY")
+if not MISTRAL_API_KEY:
+    try: MISTRAL_API_KEY= st.secrets["MISTRAL_API_KEY"]
+    except Exception:
+        raise RuntimeError(
+            "MISTRAL_API_KEY is not sent in environment/ .env/ streamlit secrets"
+        )
+        
 
 def get_llm():
     return ChatMistralAI(
         model="ministral-8b-latest", 
-        mistral_api_key= os.getenv("MISTRAL_API_KEY"), 
+        mistral_api_key= MISTRAL_API_KEY, 
         temperature=0.3,
     )
     

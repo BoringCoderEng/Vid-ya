@@ -2,6 +2,7 @@ import whisper
 import os
 import requests
 from pydub import AudioSegment
+import streamlit as st
 
 SARVAM_PIECE_SECONDS = 25
 
@@ -9,6 +10,12 @@ WHISPER_MODEL= os.getenv("WHISPER_MODEL", "base")
 
 
 SARVAM_API_KEY= os.getenv("SARVAM_API_KEY")
+if not SARVAM_API_KEY:
+    try: SARVAM_API_KEY= st.secrets["SARVAM_API_KEY"]
+    except Exception:
+        raise RuntimeError(
+            "SARVAM_API_KEY is not sent in environment/ .env/ streamlit secrets"
+        )
 SARVAM_STT_TRANSLATE_URL="https://api.sarvam.ai/speech-to-text-translate"
 SARVAM_MODEL= os.getenv("SARVAM_STT_MODEL", "saaras: v2.5")
 
