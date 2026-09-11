@@ -10,7 +10,7 @@ DOWNLOAD_DIR = "downloads"
 os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 
 def download_yt_audio(url: str)-> str:
-    output_path= os.path.join(DOWNLOAD_DIR, "%(title)s.%(ext)s")
+    output_template= os.path.join(DOWNLOAD_DIR, "%(title)s.%(ext)s")
     ydl_opts ={
         "format": "bestaudio/best",
         "outtmpl": output_template,
