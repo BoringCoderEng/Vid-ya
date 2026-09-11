@@ -16,8 +16,9 @@ if not SARVAM_API_KEY:
         raise RuntimeError(
             "SARVAM_API_KEY is not sent in environment/ .env/ streamlit secrets"
         )
-SARVAM_STT_TRANSLATE_URL="https://api.sarvam.ai/speech-to-text-translate"
-SARVAM_MODEL= os.getenv("SARVAM_STT_MODEL", "saaras:v2.5")
+
+SARVAM_STT_URL = "https://api.sarvam.ai/speech-to-text"
+SARVAM_MODEL = os.getenv("SARVAM_STT_MODEL", "saaras:v3")
 
 
 _model=None
@@ -44,9 +45,9 @@ def _send_to_sarvam(piece_path: str) -> str:
 
     with open(piece_path, "rb") as f:
         files = {"file": (os.path.basename(piece_path), f, "audio/wav")}
-        data = {"model": SARVAM_MODEL, "with_diarization": "false"}
+        data = {"model": SARVAM_MODEL, "mode": "translate"}
         response = requests.post(
-            SARVAM_STT_TRANSLATE_URL,
+            SARVAM_STT_URL,
             headers=headers,
             files=files,
             data=data,
