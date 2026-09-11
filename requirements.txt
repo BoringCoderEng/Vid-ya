@@ -6,6 +6,9 @@ yt-dlp>=2024.4.9                  # Download audio from YouTube URLs
 pydub>=0.25.1                     # Audio file manipulation / format conversion
 ffmpeg-python>=0.2.0              # FFmpeg bindings (FFmpeg binary must be installed separately)
 
+audioop-lts
+
+
 # ── Speech-to-Text (local Whisper) ────────────────────────────────────────────
 openai-whisper>=20231117          # OpenAI Whisper (runs locally)
 torch>=2.2.0                      # PyTorch backend for Whisper
@@ -20,6 +23,8 @@ langchain-core>=0.2.0
 langchain-community>=0.2.0
 langchain-mistralai>=0.1.0        # LangChain wrapper for Mistral API
 mistralai>=0.4.0                  # Official Mistral Python client
+langchain-chroma
+
 
 # ── RAG Pipeline ──────────────────────────────────────────────────────────────
 chromadb>=0.5.0                   # Local vector store
