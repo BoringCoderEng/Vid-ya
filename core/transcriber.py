@@ -54,10 +54,9 @@ def _send_to_sarvam(piece_path: str) -> str:
         )
 
     if not response.ok:
-        print(f"\n❌ Sarvam returned {response.status_code}")
-        print(f"Response body: {response.text}\n")
-        response.raise_for_status()
-
+        raise RuntimeError(
+            f"Sarvam API error {response.status_code}: {response.text}"
+        )
     return response.json().get("transcript", "")
 
 
