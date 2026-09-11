@@ -17,7 +17,7 @@ if not SARVAM_API_KEY:
             "SARVAM_API_KEY is not sent in environment/ .env/ streamlit secrets"
         )
 SARVAM_STT_TRANSLATE_URL="https://api.sarvam.ai/speech-to-text-translate"
-SARVAM_MODEL= os.getenv("SARVAM_STT_MODEL", "saaras: v2.5")
+SARVAM_MODEL= os.getenv("SARVAM_STT_MODEL", "saaras:v2.5")
 
 
 _model=None
