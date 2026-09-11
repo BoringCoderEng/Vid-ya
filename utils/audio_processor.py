@@ -15,6 +15,7 @@ def download_yt_audio(url: str)-> str:
         "format": "bestaudio/best",
         "outtmpl": output_template,
         "noplaylist": True,
+        "verbose": True,
         "extractor_args": {
         "youtube": {"player_client": ["android_vr"]}
         },
