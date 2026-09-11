@@ -15,7 +15,6 @@ def download_yt_audio(url: str)-> str:
         "format": "bestaudio/best",
         "outtmpl": output_template,
         "noplaylist": True,
-        "verbose": True,
         "postprocessors": [
             {
                 "key": "FFmpegExtractAudio",
